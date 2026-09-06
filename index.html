@@ -2,6 +2,7 @@
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kyle Dalton — Business &amp; Data Analyst</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;0,900;1,600&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================
@@ -36,8 +37,6 @@ a:focus-visible,summary:focus-visible{outline:2.5px solid var(--accent);outline-
 .hero .giant{position:absolute;top:2vh;left:0;width:100%;text-align:center;font-family:var(--display);font-weight:900;
   font-size:clamp(90px,26vw,26rem);line-height:.85;color:var(--accent);letter-spacing:-.02em;user-select:none;white-space:nowrap}
 .hero .photo{position:relative;z-index:2;width:min(700px,72vw,60vh);margin-bottom:0}
-/* photo blends into the page so a plain rectangular headshot looks intentional — no background cutout needed.
-   Have a transparent-background cutout PNG? It just looks even better here. */
 .hero .photo img{width:100%;display:block;border-radius:26px 26px 0 0;
   -webkit-mask-image:linear-gradient(180deg,#000 74%,transparent);mask-image:linear-gradient(180deg,#000 74%,transparent)}
 .hero .photo .initials{width:min(340px,52vw);aspect-ratio:3/4;border-radius:24px 24px 0 0;background:linear-gradient(180deg,color-mix(in srgb,var(--ink) 82%,var(--accent)),var(--ink));
@@ -56,11 +55,9 @@ body.hero-left .hero .state h1{color:var(--ink);text-shadow:none}
 .chip.c1{left:6vw;top:56vh} .chip.c2{left:9vw;top:72vh} .chip.c3{right:6vw;top:54vh}
 .chip.c3 ul{list-style:none} .chip.c3 li{font-weight:700;font-size:14.5px;padding:4px 0;color:color-mix(in srgb,var(--ink) 78%,var(--bg))}
 .chip.c3 li::before{content:"✦ ";color:var(--accent)}
-/* hero entrance — plays once on load, then hands control back for parallax */
 @keyframes heroRise{from{opacity:0;transform:translateY(46px)}to{opacity:1;transform:translateY(0)}}
 @keyframes heroRiseC{from{opacity:0;transform:translate(-50%,46px)}to{opacity:1;transform:translate(-50%,0)}}
 @keyframes chipPop{0%{opacity:0;transform:scale(.7) translateY(14px)}70%{opacity:1;transform:scale(1.05)}100%{opacity:1;transform:none}}
-/* giant name — heynesh-style per-letter blur reveal (JS wraps each char in .ch) */
 .hero .giant .ch{display:inline-block;opacity:0;filter:blur(16px);transform:translateY(42px) scale(1.12);animation:chIn .75s cubic-bezier(.2,.8,.2,1) forwards}
 @keyframes chIn{to{opacity:1;filter:blur(0);transform:none}}
 .hero .giant.nofx .ch{opacity:1;filter:none;transform:none;animation:none}
@@ -70,7 +67,6 @@ body.hero-left .hero .state h1{color:var(--ink);text-shadow:none}
 .chip.c1{animation:chipPop .7s .95s cubic-bezier(.2,.8,.3,1.2) backwards}
 .chip.c2{animation:chipPop .7s 1.1s cubic-bezier(.2,.8,.3,1.2) backwards}
 .chip.c3{animation:chipPop .7s 1.25s cubic-bezier(.2,.8,.3,1.2) backwards}
-/* ---------- BACKGROUND PORTRAIT (heynesh: soft giant portrait behind About — reuses photo.jpg, blank if none) ---------- */
 .about-portrait{position:absolute;z-index:0;top:-8vh;right:-2vw;width:min(660px,50vw);height:120%;
   background:url(photo.jpg) top center/cover no-repeat;opacity:.10;filter:grayscale(.25) contrast(1.04);pointer-events:none;
   -webkit-mask-image:linear-gradient(180deg,transparent,#000 20%,#000 68%,transparent);
@@ -78,21 +74,18 @@ body.hero-left .hero .state h1{color:var(--ink);text-shadow:none}
 #journey{position:relative;overflow:hidden}
 #journey>.badge,#journey>h2,#journey>.lede,#journey>.journey{position:relative;z-index:1}
 @media(max-width:900px){.about-portrait{display:none}}
-/* ---------- CONNECTING LINE (heynesh timeline path — measured + drawn in JS) ---------- */
 svg.jline{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
 svg.jline path{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linecap:round;
   filter:drop-shadow(0 0 5px color-mix(in srgb,var(--accent) 50%,transparent))}
 svg.jline circle{fill:var(--accent);stroke:var(--ink);stroke-width:2.5}
 body.has-jline .jcard::before{display:none}
 body.has-jline.journey-rail .journey{border-left:none}
-/* ---------- MARQUEE ---------- */
 .marq{overflow:hidden;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:18px 0;background:color-mix(in srgb,var(--bg) 86%,#fff 6%)}
 .marq .track{display:flex;width:max-content;animation:marq 26s linear infinite;will-change:transform}
 .marq:hover .track{animation-play-state:paused}
 .mtxt{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;padding-right:14px}
 .mtxt em{font-style:normal;color:var(--accent);-webkit-text-stroke:.6px color-mix(in srgb,var(--ink) 45%,transparent)}
 @keyframes marq{to{transform:translateX(-50%)}}
-/* ---------- SIDEBAR ---------- */
 aside{position:fixed;z-index:60;top:16px;left:16px;bottom:16px;width:230px;display:flex;flex-direction:column;gap:10px;
   opacity:0;pointer-events:none;transform:translateX(-16px);transition:opacity .45s ease,transform .45s ease}
 body.rail aside{opacity:1;pointer-events:auto;transform:none}
@@ -110,7 +103,6 @@ aside nav a:hover{transform:translateX(3px)} aside nav a.on,aside nav a:active{b
 aside .mail{display:flex;align-items:center;justify-content:space-between;font-family:monospace;font-size:12px;cursor:pointer}
 aside .cta{margin-top:auto}
 aside .cta a{display:block;text-align:center}
-/* ---------- MAIN ---------- */
 main{max-width:1060px;margin:0 auto;padding:0 5vw}
 body.rail main{margin-left:max(270px,calc(50% - 530px + 60px))}
 @media(min-width:1600px){body.rail main{margin-left:auto}}
@@ -120,7 +112,6 @@ h2.big{font-family:var(--display);font-weight:900;font-size:clamp(2.4rem,6vw,4.6
 h2.big .ghost{color:color-mix(in srgb,var(--ink) 22%,var(--bg))}
 h2.big em,.state h1 em{font-style:italic;color:var(--accent);font-weight:600}
 .lede{max-width:520px;color:color-mix(in srgb,var(--ink) 75%,var(--bg));font-size:16.5px}
-/* ---------- JOURNEY ---------- */
 .journey{position:relative;margin-top:56px}
 .journey .line{position:absolute;inset:0;pointer-events:none}
 .jcard{position:relative;background:color-mix(in srgb,var(--bg) 60%,#fff 14%);backdrop-filter:blur(8px);
@@ -135,11 +126,9 @@ body.journey-stagger .jcard{max-width:440px}
 body.journey-stagger .jcard:nth-child(even){margin-left:auto}
 body.journey-stagger .jcard::before{display:none}
 body.journey-rail .journey{border-left:2.5px solid var(--ink);padding-left:40px}
-/* journey cards slide in from alternating sides */
 body.journey-stagger .jcard.reveal{transform:translateX(-46px)}
 body.journey-stagger .jcard:nth-child(even).reveal{transform:translateX(46px)}
 body.journey-stagger .jcard.reveal.in{transform:none}
-/* ---------- PROJECTS (dark band) ---------- */
 .dark{background:var(--ink);color:var(--on-dark);margin-top:130px;padding:110px 0 100px}
 .dark .wrap{max-width:1060px;margin:0 auto;padding:0 5vw}
 body.rail .dark .wrap{margin-left:max(270px,calc(50% - 530px + 60px))}
@@ -170,7 +159,6 @@ body.projects-grid .projwrap{display:grid;grid-template-columns:repeat(auto-fit,
 .proj .go{position:absolute;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#111;
   display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;transition:transform .3s}
 .proj:hover .go{transform:rotate(45deg)}
-/* ---------- BRING ---------- */
 .bring{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:48px}
 .bring .b{background:color-mix(in srgb,var(--bg) 60%,#fff 14%);border:1px solid color-mix(in srgb,var(--ink) 8%,transparent);
   border-radius:18px;padding:26px;transition:transform .35s ease,box-shadow .35s ease}
@@ -180,7 +168,6 @@ body.projects-grid .projwrap{display:grid;grid-template-columns:repeat(auto-fit,
 .bring h3{font-family:var(--display);font-weight:800;font-size:1.25rem;margin-bottom:10px}
 .bring ul{list-style:none;font-size:14.5px} .bring li{padding:4px 0;font-weight:600;color:color-mix(in srgb,var(--ink) 78%,var(--bg))}
 .bring li::before{content:"✦ ";color:var(--accent)}
-/* ---------- REFERENCES (simple text cards) ---------- */
 .refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:44px}
 .ref{background:color-mix(in srgb,var(--bg) 60%,#fff 14%);border:1px solid color-mix(in srgb,var(--ink) 8%,transparent);
   border-radius:18px;padding:26px;transition:transform .35s ease,box-shadow .35s ease}
@@ -188,7 +175,6 @@ body.projects-grid .projwrap{display:grid;grid-template-columns:repeat(auto-fit,
 .ref h3{font-family:var(--display);font-weight:800;font-size:1.25rem;margin-bottom:6px}
 .ref p{font-size:14.5px;color:color-mix(in srgb,var(--ink) 78%,var(--bg))}
 .ref .rc{margin-top:12px;font-family:monospace;font-size:12.5px;color:var(--accent);word-break:break-word}
-/* ---------- FAQ (two-column, like the reference site) ---------- */
 .faq{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:640px){.faq{grid-template-columns:1fr}}
 .faq details{background:color-mix(in srgb,var(--bg) 60%,#fff 14%);border:1px solid color-mix(in srgb,var(--ink) 8%,transparent);border-radius:14px;transition:box-shadow .3s ease}
@@ -201,7 +187,6 @@ body.projects-grid .projwrap{display:grid;grid-template-columns:repeat(auto-fit,
 .faq .bd{padding:0 22px 20px;font-size:15px;color:color-mix(in srgb,var(--ink) 78%,var(--bg))}
 .faq details[open] .bd{animation:fadeDown .35s ease}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-6px)}}
-/* ---------- FOOTER ---------- */
 footer{margin-top:130px;padding:0 5vw 60px}
 footer .inner{max-width:1060px;margin:0 auto;text-align:center}
 body.rail footer .inner{margin-left:max(270px,calc(50% - 530px + 60px))}
@@ -222,7 +207,7 @@ footer .fine{margin-top:56px;font-size:12.5px;color:color-mix(in srgb,var(--ink)
   <div class="box stats"><div><b>3+</b><span>years experience</span></div><div><b>40%</b><span>accuracy gained</span></div></div>
   <div class="box"><nav>
     <a href="#top" class="on">Home</a><a href="#journey">My Journey</a><a href="#projects">Projects</a>
-    <a href="#bring">What I Bring</a><a href="#faq">Q&amp;A</a><a href="#contact">Contact</a>
+    <a href="#bring">What I Bring</a><a href="#refs">References</a><a href="#faq">Q&amp;A</a><a href="#contact">Contact</a>
   </nav></div>
   <div class="box mail" onclick="navigator.clipboard.writeText('Kyle.Dalton1@outlook.com');this.querySelector('i').textContent='copied!'"><span>Kyle.Dalton1…</span><i style="font-style:normal">⧉</i></div>
   <div class="cta"><a class="pill" href="mailto:Kyle.Dalton1@outlook.com">Email Me</a></div>
@@ -239,7 +224,7 @@ footer .fine{margin-top:56px;font-size:12.5px;color:color-mix(in srgb,var(--ink)
 </header>
 
 <!-- Edit the skills list ONCE below — the page duplicates it automatically for the loop -->
-<div class="marq"><div class="track" id="mtrack"><span class="mtxt">SQL <em>✦</em> Excel &amp; Power BI <em>✦</em> Tableau <em>✦</em> Data Validation <em>✦</em> Process Automation <em>✦</em> AWS <em>✦</em>&nbsp;</span></div></div>
+<div class="marq"><div class="track" id="mtrack"><span class="mtxt">SQL <em>✦</em> AI <em>✦</em> Tableau <em>✦</em> Excel <em>✦</em> Critical Thinking <em>✦</em> Selenium <em>✦</em>&nbsp;</span></div></div>
 
 <main>
 <section id="journey" class="reveal">
@@ -265,6 +250,17 @@ footer .fine{margin-top:56px;font-size:12.5px;color:color-mix(in srgb,var(--ink)
   <div class="bring"><div class="b"><div class="ic">✦</div><h3>Data Integrity</h3><ul><li>SQL-driven validation processes</li><li>Automated QA on research datasets</li><li>40% accuracy improvement at Takeda</li></ul></div><div class="b"><div class="ic">✦</div><h3>Process Automation</h3><ul><li>Automated reporting workflows</li><li>Advanced Excel &amp; Power BI dashboards</li><li>SOPs that keep teams self-sufficient</li></ul></div><div class="b"><div class="ic">✦</div><h3>Cross-Functional Collaboration</h3><ul><li>Worked across pharma, health, and gov</li><li>Bridges technical and non-technical teams</li><li>Clear documentation for continuity</li></ul></div></div>
 </section>
 
+<section id="refs" class="reveal">
+  <span class="badge">REFERENCES</span>
+  <h2 class="big">People I&rsquo;ve <span class="ghost">worked with</span></h2>
+  <p class="lede">Available on request — happy to make an introduction.</p>
+  <div class="refs">
+    <div class="ref"><h3>Dalton Kyle</h3><p>Test · UMass Boston</p><p class="rc">contact on request · Test@gmail.com</p></div>
+    <div class="ref"><h3>Dalton Kyle2</h3><p>Test · UMass Boston</p><p class="rc">contact on request · Test2@gmail.com</p></div>
+    <div class="ref"><h3>Dalton Kyle3</h3><p>Test · UMass Boston</p><p class="rc">contact on request · Test3@gmail.com</p></div>
+  </div>
+</section>
+
 <section id="faq" class="reveal">
   <span class="badge">QUICK ANSWERS</span>
   <h2 class="big">You&rsquo;d Ask <span class="ghost">Anyway</span></h2>
@@ -284,7 +280,7 @@ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* reveal on scroll */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-/* marquee: duplicate the skills strip once so the loop is seamless (students edit it only once) */
+/* marquee: duplicate the skills strip once so the loop is seamless */
 (function(){const t=document.getElementById('mtrack');if(!t||!t.firstElementChild)return;
 const c=t.firstElementChild.cloneNode(true);c.setAttribute('aria-hidden','true');t.appendChild(c)})();
 /* HERO: split the giant name into per-letter spans for the blur reveal */
@@ -293,7 +289,7 @@ const c=t.firstElementChild.cloneNode(true);c.setAttribute('aria-hidden','true')
  if(RM){g.classList.add('nofx');g.textContent=txt;return}
  [...txt].forEach((ch,i)=>{const s=document.createElement('span');s.className='ch';
   s.textContent=ch===' '?' ':ch;s.style.animationDelay=(0.05+i*0.06)+'s';g.appendChild(s)})})();
-/* one scroll handler + cursor drift: sidebar rail, progress bar, hero parallax + heynesh-style drift */
+/* one scroll handler + cursor drift: sidebar rail, progress bar, hero parallax + drift */
 const prog=document.getElementById('prog');
 const giant=document.querySelector('.hero .giant');
 const photo=document.querySelector('.hero .photo');
@@ -310,7 +306,7 @@ if(!RM&&!matchMedia('(pointer:coarse)').matches){const hero=document.querySelect
  if(hero){hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();
    dX=((e.clientX-r.left)/r.width-0.5)*22;dY=((e.clientY-r.top)/r.height-0.5)*14;applyHero()});
   hero.addEventListener('pointerleave',()=>{dX=0;dY=0;applyHero()})}}
-/* JOURNEY: measured connecting line (heynesh timeline path), drawn in on scroll, re-measured on resize */
+/* JOURNEY: measured connecting line, drawn in on scroll, re-measured on resize */
 (function(){const wrap=document.querySelector('.journey');if(!wrap)return;
  const cards=[...wrap.querySelectorAll('.jcard')];if(cards.length<2)return;
  document.body.classList.add('has-jline');
@@ -334,7 +330,7 @@ if(!RM&&!matchMedia('(pointer:coarse)').matches){const hero=document.querySelect
  const lo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
   path.style.transition='stroke-dashoffset 1.5s ease';path.style.strokeDashoffset=0;wrap.classList.add('drawn');lo.disconnect()}}),{threshold:.12});
  lo.observe(wrap)})();
-/* numbers count up when they scroll into view (works with [8+] placeholders and real numbers alike) */
+/* numbers count up when they scroll into view */
 function animCount(el){const raw=el.textContent;const m=raw.match(/\d+/);if(!m||RM)return;
 const target=+m[0];if(!target)return;
 const pre=raw.slice(0,m.index),suf=raw.slice(m.index+m[0].length);
@@ -347,7 +343,7 @@ document.querySelectorAll('.chip b, aside .stats b').forEach(el=>cio.observe(el)
 const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;
 document.querySelectorAll('aside nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id))}}),
 {rootMargin:'-40% 0px -55% 0px'});
-['top','journey','projects','bring','faq','contact'].forEach(id=>{const el=document.getElementById(id);if(el)spy.observe(el)});
+['top','journey','projects','bring','refs','faq','contact'].forEach(id=>{const el=document.getElementById(id);if(el)spy.observe(el)});
 /* drag-to-scroll for the horizontal projects strip */
 (function(){const pw=document.querySelector('.projwrap');
 if(!pw||!document.body.classList.contains('projects-scroll'))return;
